@@ -38,7 +38,8 @@
     "lodash.assign" : "^3.2.0",
     "gulp-concat" : "^2.6.0",
     "browserify-shim" : "^3.8.10",
-    "underscore": "^1.7.0"
+    "underscore": "^1.7.0",
+    "gulp-connect" : "^2.2.0"
   },
   "browserify-shim": {
     "rune.js": "global:Rune"

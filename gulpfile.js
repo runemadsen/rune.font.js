@@ -3,17 +3,13 @@ var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
 var browserify = require('browserify');
 var babelify = require('babelify');
-var rename = require("gulp-rename");
-var tar = require('gulp-tar');
-var gzip = require('gulp-gzip');
-var zip = require('gulp-zip');
 var uglify = require('gulp-uglify');
 var sourcemaps = require('gulp-sourcemaps');
 var assign = require('lodash.assign');
 var concat = require('gulp-concat');
 var jasmine = require('gulp-jasmine');
-var jasmineBrowser = require('gulp-jasmine-browser');
 var shim = require('browserify-shim');
+var connect = require('gulp-connect');
 
 // Transpile
 // -------------------------------------------------
@@ -55,13 +51,9 @@ gulp.task('build:node', function() {
 });
 
 gulp.task('test:browser', ['build:browser'], function() {
-  return gulp.src([
-    'node_modules/rune.js/dist/rune.browser.js',
-    'tmp/font.browser.js',
-    'test/specs.js'
-  ])
-  .pipe(jasmineBrowser.specRunner())
-  .pipe(jasmineBrowser.server({port: 8888}));
+  connect.server({
+    port: 8888
+  });
 });
 
 gulp.task('specs:node', function() {
@@ -75,5 +67,6 @@ gulp.task('specs:node', function() {
 });
 
 gulp.task("test:node", ['build:node', 'specs:node'], function() {
-  return gulp.src(['tmp/font_node_specs.js']).pipe(jasmine({verbose: true, includeStackTrace:true}));
+  return gulp.src(['tmp/font_node_specs.js'])
+    .pipe(jasmine({verbose: true, includeStackTrace:true}));
 });
