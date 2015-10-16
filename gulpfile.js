@@ -70,10 +70,10 @@ gulp.task('specs:node', function() {
     'test/matchers.js',
     'test/specs.js'
   ])
-  .pipe(concat('rune_node_specs.js'))
+  .pipe(concat('font_node_specs.js'))
   .pipe(gulp.dest('tmp'));
 });
 
 gulp.task("test:node", ['build:node', 'specs:node'], function() {
-  return gulp.src(['tmp/rune_node_specs.js']).pipe(jasmine({verbose: true, includeStackTrace:true}));
+  return gulp.src(['tmp/font_node_specs.js']).pipe(jasmine({verbose: true, includeStackTrace:true}));
 });

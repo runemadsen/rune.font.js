@@ -15,7 +15,7 @@ class Font {
     });
   }
 
-  getPath(text, x, y, fontSize, options) {
+  toPath(text, x, y, fontSize, options) {
 
     if(!this.font) throw Error("You must use load() before generating font paths");
 
