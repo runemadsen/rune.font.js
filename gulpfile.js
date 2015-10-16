@@ -67,6 +67,7 @@ gulp.task('test:browser', ['build:browser'], function() {
 gulp.task('specs:node', function() {
   return gulp.src([
     'test/init_node.js',
+    'test/matchers.js',
     'test/specs.js'
   ])
   .pipe(concat('rune_node_specs.js'))
