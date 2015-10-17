@@ -4,7 +4,7 @@ A plugin that loads font files and converts them to Rune.Path objects.
 
 ## Using in the browser
 
-Simply include the `font.browser.js` file after your `rune.browser.js` file in your HTML file. You can download the latest release on [Github](#).
+First download the [latest release](https://github.com/runemadsen/rune.font.js/releases/latest). Then include the `font.browser.js` file after your `rune.browser.js` file in your HTML file.
 
 ```html
 <head>
@@ -15,7 +15,9 @@ Simply include the `font.browser.js` file after your `rune.browser.js` file in y
 
 ## Using in node
 
-Simply include the `rune.font.js` module in your code, along with your `rune.js` module.
+`npm install rune.font.js`
+
+Then require the `rune.font.js` module in your code, along with your `rune.js` module (if needed).
 
 ```js
 var Rune = require('rune.js');

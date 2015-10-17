@@ -6,7 +6,7 @@
     "type": "git",
     "url": "git://github.com/runemadsen/rune.font.js"
   },
-  "main" : "font.js",
+  "main" : "dist/font.node.js",
   "files" : [
     "font.js"
   ],
