@@ -22,6 +22,10 @@ var Rune = require('rune.js');
 var Font = require('rune.font.js');
 ```
 
+## Examples
+
+Look at the [Typography section](http://printingcode.runemadsen.com/examples/#typography) in the Rune.js examples.
+
 ## Credits
 
 Font parsing functionality provided by the awesome [opentype.js](https://github.com/nodebox/opentype.js).
