@@ -8,6 +8,7 @@ var concat = require('gulp-concat');
 var jasmine = require('gulp-jasmine');
 var shim = require('browserify-shim');
 var connect = require('gulp-connect');
+var rename = require('gulp-rename');
 
 // Transpile
 // -------------------------------------------------
@@ -26,7 +27,7 @@ function transpile(infiles, outfile, outdir, extraOpts, useShim) {
 // Build a browserified version that includes opentype, but ignores
 // rune.js (as it should be on the page already), and shims the require.
 gulp.task('build', function() {
-  return transpile('./src/font.js', 'font.js', 'tmp', {
+  return transpile('./src/font.js', 'rune.font.js', 'tmp', {
     standalone: "Rune.Font",
     ignore:"rune.js"
   }, true)
@@ -51,4 +52,12 @@ gulp.task('specs:node', function() {
 gulp.task("test:node", ['specs:node'], function() {
   return gulp.src(['tmp/font_node_specs.js'])
     .pipe(jasmine({verbose: true, includeStackTrace:true}));
+});
+
+gulp.task('minify', ['build'], function() {
+  return gulp.src(['tmp/rune.font.js'])
+    .pipe(uglify())
+    .on('error', function(err) { console.error(err); })
+    .pipe(rename({extname: '.min.js'}))
+    .pipe(gulp.dest('tmp'))
 });
