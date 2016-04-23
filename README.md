@@ -4,12 +4,12 @@ A plugin that loads font files and converts them to Rune.Path objects.
 
 ## Using in the browser
 
-First download the [latest release](https://github.com/runemadsen/rune.font.js/releases/latest). Then include the `font.browser.js` file after your `rune.browser.js` file in your HTML file.
+First download the [latest release](https://github.com/runemadsen/rune.font.js/releases/latest). Then include the `rune.font.js` file after your `rune.js` file in your HTML file.
 
 ```html
 <head>
-  <script src="rune.browser.js"></script>
-  <script src="font.browser.js"></script>
+  <script src="rune.js"></script>
+  <script src="rune.font.js"></script>
 </head>
 ```
 
