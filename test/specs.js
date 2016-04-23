@@ -1,7 +1,7 @@
 describe("Rune.Font", function() {
 
   var f;
-  var fontFile = "HelveticaLT.ttf"; // This needs to be test/HelveticaLT.ttf to work in node test. Arghhh.
+  var fontFile = typeof window === 'undefined' ? "test/HelveticaLT.ttf" : "HelveticaLT.ttf";
 
   beforeEach(function() {
     f = new Rune.Font(fontFile);

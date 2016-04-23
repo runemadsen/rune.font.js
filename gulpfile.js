@@ -2,9 +2,7 @@ var gulp = require('gulp');
 var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
 var browserify = require('browserify');
-var babelify = require('babelify');
 var uglify = require('gulp-uglify');
-var sourcemaps = require('gulp-sourcemaps');
 var assign = require('lodash.assign');
 var concat = require('gulp-concat');
 var jasmine = require('gulp-jasmine');
@@ -15,42 +13,26 @@ var connect = require('gulp-connect');
 // -------------------------------------------------
 
 function transpile(infiles, outfile, outdir, extraOpts, useShim) {
-
   var opts = assign({}, extraOpts);
-  var bundler = browserify(infiles, opts)
-    .transform(babelify.configure({sourceMaps:false}))
-
+  var bundler = browserify(infiles, opts);
   if(useShim) bundler.transform(shim);
-
   return bundler.bundle()
     .on('error', function(err) { console.error(err); this.emit('end'); })
     .pipe(source(outfile))
     .pipe(buffer())
-    .pipe(sourcemaps.init({ loadMaps: true }))
-    .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest(outdir));
 }
 
 // Build a browserified version that includes opentype, but ignores
 // rune.js (as it should be on the page already), and shims the require.
-gulp.task('build:browser', function() {
-  return transpile('./src/font.js', 'font.browser.js', 'tmp', {
+gulp.task('build', function() {
+  return transpile('./src/font.js', 'font.js', 'tmp', {
     standalone: "Rune.Font",
-    ignore:"rune.js",
-    debug:true
+    ignore:"rune.js"
   }, true)
 });
 
-// Build a node version with no bundled packages.
-gulp.task('build:node', function() {
-  return transpile('./src/font.js', 'font.node.js', 'tmp', {
-    bundleExternal:false,
-    standalone: "Rune.Font",
-    debug:true
-  })
-});
-
-gulp.task('test:browser', ['build:browser'], function() {
+gulp.task('test:browser', ['build'], function() {
   connect.server({
     port: 8888
   });
@@ -66,7 +48,7 @@ gulp.task('specs:node', function() {
   .pipe(gulp.dest('tmp'));
 });
 
-gulp.task("test:node", ['build:node', 'specs:node'], function() {
+gulp.task("test:node", ['specs:node'], function() {
   return gulp.src(['tmp/font_node_specs.js'])
     .pipe(jasmine({verbose: true, includeStackTrace:true}));
 });

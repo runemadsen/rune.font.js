@@ -1,21 +1,21 @@
-import opentype from "opentype.js"
-import Rune from "rune.js"
+var opentype = require("opentype.js");
+var Rune = require("rune.js");
 
-class Font {
+var Font = function(url) {
+  this.url = url;
+}
 
-  constructor(url) {
-    this.url = url;
-  }
+Font.prototype = {
 
-  load(cb) {
+  load: function(cb) {
     var that = this;
     opentype.load(this.url, function(err, font) {
       that.font = font;
       cb(err);
     });
-  }
+  },
 
-  toPath(text, x, y, fontSize, options) {
+  toPath: function(text, x, y, fontSize, options) {
 
     if(!this.font) throw Error("You must use load() before generating font paths");
 
@@ -44,4 +44,4 @@ class Font {
 
 }
 
-export default Font;
+module.exports = Font;
