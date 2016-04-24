@@ -17,6 +17,9 @@
     "opentype.js" : "^0.5.0",
     "rune.js" : "^0.2.3"
   },
+  "keywords" : [
+    "rune.js"
+  ],
   "devDependencies": {
     "gulp": "^3.9.0",
     "browserify": "^11.0.0",
@@ -26,7 +29,6 @@
     "gulp-jasmine-browser" : "^0.2.3",
     "gulp-rename": "^1.2.2",
     "gulp-uglify" : "^1.4.0",
-    "gulp-uglify": "^1.4.0",
     "lodash.assign" : "^3.2.0",
     "gulp-concat" : "^2.6.0",
     "browserify-shim" : "^3.8.10",
