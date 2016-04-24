@@ -1,3 +1,7 @@
+## 0.0.3
+
+- Adding `rune.js` keyword to package.json, so must republish.
+
 ## 0.0.2
 
 - Rewriting in node require style

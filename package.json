@@ -1,6 +1,6 @@
 {
   "name": "rune.font.js",
-  "version" : "0.0.2",
+  "version" : "0.0.3",
   "description": "Plugin for Rune.js that gives access to webfont vectors.",
   "repository": {
     "type": "git",
