@@ -3,6 +3,8 @@
 - Building and testing now done with `rune.plugin.js`
 - NPM package now has a `dist/rune.font.js` file to use in browser
 - Filled is renamed from `font.browser.js` to `rune.font.js`
+- Updating opentype.js to newest version
+- Plugin now working with Rune.js version `1.0.0`
 
 ## 0.0.3
 
