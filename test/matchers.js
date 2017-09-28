@@ -14,8 +14,7 @@ beforeEach(function () {
           var pass = vector.command == a.command;
           pass = pass && vector.vec1.x == a.vec1.x;
           pass = pass && vector.vec1.y == a.vec1.y;
-          pass = pass && _.isUndefined(vector.vec2);
-          pass = pass && _.isUndefined(vector.vec3);
+          pass = pass && !vector.vec2 && !vector.vec3;
 
           if (pass) {
             msg = "Expected not to match";
@@ -43,8 +42,7 @@ beforeEach(function () {
           var pass = vector.command == a.command;
           pass = pass && vector.vec1.x == a.vec1.x;
           pass = pass && vector.vec1.y == a.vec1.y;
-          pass = pass && _.isUndefined(vector.vec2);
-          pass = pass && _.isUndefined(vector.vec3);
+          pass = pass && !vector.vec2 && !vector.vec3;
 
           if (pass) {
             msg = "Expected not to match";
@@ -69,7 +67,7 @@ beforeEach(function () {
           expected.vec2 = new Rune.Vector(c, d);
           expected.vec3 = new Rune.Vector(e, f)
           return {
-            pass: _.isEqual(anchor, expected),
+            pass: JSON.stringify(anchor) == JSON.stringify(expected),
             message: "Actual: " + JSON.stringify(anchor) + ", expected: " + JSON.stringify(expected)
           };
         }
@@ -84,7 +82,7 @@ beforeEach(function () {
           expected.vec1 = new Rune.Vector(a, b);
           expected.vec2 = new Rune.Vector(c, d);
           return {
-            pass: _.isEqual(anchor, expected),
+            pass: JSON.stringify(anchor) == JSON.stringify(expected),
             message: "Actual: " + JSON.stringify(anchor) + ", expected: " + JSON.stringify(expected)
           }
         }
